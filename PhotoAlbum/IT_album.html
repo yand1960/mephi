@@ -1,0 +1,58 @@
+<html>
+    <head>
+		<style>
+			.h1 {
+				text-align: center;
+			}
+
+			#main {
+				height: 500px;
+			}
+			.img-box {
+				display: flex;
+				justify-content: center;
+				
+			}
+			.img-box .img {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-bottom: 33px ;
+				margin-right: 33px;
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				overflow: hidden;
+				filter: grayscale(1);
+				cursor: pointer;
+				transition: filter 0.3s ease-in-out;
+
+			}
+
+			.img-box .img:hover {
+				filter: grayscale(0);
+
+			}
+
+			.img-box .thumbs img {
+				width: 100%;
+				height: 100%;
+			
+			}
+
+
+		</style>
+    </head>
+    <body>
+        <h1 class="h1">IT album</h1>
+        <div class="img-box">
+			<div class="thumbs">
+				<div class="img"><img src="images/IT01_thumb.jpg" /> </div>
+				<div class="img"><img src="images/IT02_thumb.jpg" /> </div>
+				<div class="img"><img src="images/IT03_thumb.jpg" /> </div>
+				<div class="img"><img src="images/IT04_thumb.jpg" /> </div>
+			</div>
+			<img src="images/IT03.jpg" id= "main"/>
+		</div>
+    </body>
+</html>
