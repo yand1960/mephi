@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <style>
+            h1 {
+                font-family: 'Times New Roman', Times, serif;
+                font-style: italic;
+                font-weight: bolder;
+                font-size: 50px;
+                text-align: center;
+            }
+
+            .thumbs img{
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
+                margin-bottom: 16px;
+                margin-right: 16px;
+                display: flex;
+				flex-direction: column;
+				justify-content: center;
+            }
+
+            .thumbs img:hover{
+                height: 150px;
+                transform: scale(1.1);
+                transition-property: transform;
+                transition-duration: 0.5s;
+                cursor: pointer;
+            }
+
+            .img_box {
+                display: flex;
+				justify-content: center;
+
+            }
+
+            #main {
+                height: 500;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <h1>ASh Album</h1>
+        <div class="img_box">
+            <div class="thumbs">
+                <img src="images/ASh01_thumb.jpg" />
+                <img src="images/ASh02_thumb.jpg" />
+                <img src="images/ASh03_thumb.jpg" />
+                <img src="images/ASh04_thumb.jpg" />
+            </div>
+            <img src="images/ASh04.jpg" id="main"  />
+        </div>
+
+    </body>
+
+</html>

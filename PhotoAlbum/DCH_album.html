@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DCH_album</title>
+    <style>
+        .thumbs {
+            float: left;
+            margin-left: 16px;
+        }
+        div.thumbs img{
+            height: 200px;
+            width: 200px;
+            margin-bottom: 16px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            display: block;
+            transform: scale(1);
+            transition-property: transform;
+            transition-duration: 1s;
+            cursor: pointer;
+        }
+
+        div.thumbs img:hover {
+            transform: scale(1.1);
+            transition-property: transform;
+            transition-duration: 1s;
+            cursor: pointer;
+        }
+
+        div.thumbs img:active {
+            filter: sepia(1);
+        }
+
+        #main {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 800px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+
+            document.getElementById('container').onclick = function(event) {
+                let target = event.target;
+                if (target.tagName !== 'IMG') return;
+                document.getElementById('main').src = target.src.replace(/_thumb/g, '');
+            };
+
+        }, false);
+    </script>
+</head>
+<body>
+    <h1>DCH_album</h1>
+    <div class="thumbs" id="container">
+        <img src="images/DCH01_thumb.jpg" alt="DCH01_thumb"/>
+        <img src="images/DCH02_thumb.jpg" alt="DCH02_thumb"/>
+        <img src="images/DCH03_thumb.jpg" alt="DCH03_thumb"/>
+        <img src="images/DCH04_thumb.jpg" alt="DCH04_thumb"/>
+    </div>
+    <img id="main" src="images/DCH01.jpg" alt="DCH_main">
+</body>
+</html>
