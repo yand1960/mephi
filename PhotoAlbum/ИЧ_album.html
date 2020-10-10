@@ -23,26 +23,61 @@
 				width: 100px;
 				height: 500px;
 				border-radius: 50%;
+				cursor: pointer;
+				border: thick white solid;
 			}
 
 			div.thumbs img {
-				height: 100px;
+				height: 110px;
 				border-radius: 9999px;
 			}
 
 			#main {
 				height: 500px;
+				width: auto;
+			}
+			
+			#main.transiting {
+				width: 10px;
+				transition-property: width;
+				transition-duration: 10s;
+			}
+			
+			div.thumbs img:hover {
+				border: thick gray solid;
+			}
+			
+			div.thumbs img.selected{
+				border: thick black solid;
 			}
 
 		</style>
+		<script>
+			var selected_thumb = null; 
+			
+			function show(thumb) {
+				if (selected_thumb != null)
+					//selected_thumb.className = "";
+					selected_thumb.classList.remove("selected");
+				selected_thumb = thumb;
+				//alert(thumb.src);
+				console.log(thumb.src);
+				var img_url = thumb.src.replace("_thumb","");
+				console.log(img_url);
+				//document.getElementById("main").classList.add("transiting");
+				document.getElementById("main").src = img_url;
+				//thumb.className = "selected";
+				thumb.classList.add("selected");
+			}
+		</script>
 	</head>
 	<body>
 		<h1>ИЧ album</h1>
 		<div class="thumbs">
-			<img src="images/ИЧ01_thumb.jpg" />
-			<img src="images/ИЧ02_thumb.jpg" />
-			<img src="images/ИЧ03_thumb.jpg" />
-			<img src="images/ИЧ04_thumb.jpg" />
+			<img src="images/ИЧ01_thumb.jpg" onclick="show(this);"/>
+			<img src="images/ИЧ02_thumb.jpg" onclick="show(this);"/>
+			<img src="images/ИЧ03_thumb.jpg" onclick="show(this);"/>
+			<img src="images/ИЧ04_thumb.jpg" onclick="show(this);"/>
 		</div>
 		<img src="images/ИЧ03.jpg" id="main"/>
 	</body>
