@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<style>
+
+            div.thumbs{
+                float:left;
+            }
+            
+
+            #main{
+                height: 400px;
+            }
+
+            div.thumbs img {
+				 display: block;
+                 width: 100px;
+                 height: 100px;
+                 margin: 5px;
+                 overflow: hidden;
+                 border-radius: 50%;
+                 cursor: pointer;
+				 border: thick white solid;
+            }
+
+            #main {
+                margin-left:10px;
+				width: 400px;
+				transition-property: width;
+				transition-duration: 0.5s;
+            }
+			
+			
+			div.thumbs img:hover {
+				border: thick blue solid;
+			}
+			
+			div.thumbs img.selected {
+				border: thick red solid;
+			}
+
+		</style>
+		<script>
+			var selected_thumb = null;
+		
+			function show(thumb) {
+				document.getElementById("main").style.width = "20px";
+			
+				if (selected_thumb != null) {
+					//selected_thumb.className = "";
+					selected_thumb.classList.remove("selected");
+				}
+				selected_thumb = thumb;
+				
+				window.setTimeout(function(){
+					document.getElementById("main").style.width = "400px";
+					var img_url = thumb.src.replace("_thumb","");
+					console.log(img_url);
+					
+					document.getElementById("main").src = img_url;
+					thumb.classList.add("selected");
+				}, 500);
+				
+			}
+		</script>
+	</head>
+	<body>
+		<h1>YA album</h1>
+		<div class="thumbs">
+			<img src="images/YA01_thumb.jpg" onclick="show(this);"/>
+			<img src="images/YA02_thumb.jpg" onclick="show(this);"/>
+			<img src="images/YA03_thumb.jpg" onclick="show(this);"/>
+			<img src="images/YA04_thumb.jpg" onclick="show(this);"/>
+		</div>
+		<img src="images/YA03.jpg" id="main" class="main"/>
+	</body>
+</html>
