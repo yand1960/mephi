@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <style>
+            div.thumbs{
+                float:left;
+            }
+            
+            div.thumbs .photo{
+                display: block;
+            }
+
+            #main{
+                height: 400px;
+            }
+
+            .photo {
+                 width: 100px;
+                 height: 100px;
+                 margin: 5px;
+                 overflow: hidden;
+                 border-radius: 50%;
+                 cursor: pointer;
+            }
+
+            .personPhoto {
+                width: 100%;
+                height: 100%;
+                margin: 0 auto;
+            }
+
+            #main {
+                margin-left:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>RG Album</h1>
+        
+        <div class="thumbs">
+                <div class="photo">
+                  <img class="personPhoto" alt="" src="images/RG01_thumb.jpg">
+                </div>
+             
+                <div class="photo">
+                  <img class="personPhoto" alt="" src="images/RG02_thumb.jpg">
+                </div>
+                   
+                <div class="photo">
+                  <img class="personPhoto" alt="" src="images/RG03_thumb.jpg">
+                </div>
+              
+                <div class="photo">
+                  <img class="personPhoto" alt="" src="images/RG04_thumb.jpg">
+                </div>    
+        </div>
+        <img src="images/RG01.jpg" id="main"/>
+    </body>
+</html>

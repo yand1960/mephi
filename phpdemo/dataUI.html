@@ -1,0 +1,128 @@
+<html>
+	<head>
+		<style>
+			#indicator {
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background-color: #00AA00;
+			}
+			
+			#indicator.risky {
+				background-color: #FF0000;
+			}
+			
+			span.risky {
+				color: #FF0000;
+			}
+		</style>
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script>
+			var risk_level = 5000;
+			
+			function getData() {
+				var url = "data.html";
+				$.get(url, function(result) {
+				
+						if (result > risk_level) {
+							document.getElementById("indicator").classList.add("risky");
+							span_class = "risky";
+						}
+						else {
+							document.getElementById("indicator").classList.remove("risky");
+							span_class = "";
+						}
+						
+						now = new Date();
+						document.getElementById("data").innerHTML =
+							"<span class=" + span_class + ">" + now + " " + result + "</span><br />" + 
+							document.getElementById("data").innerHTML;
+				});
+					
+			}
+			
+			function getData4() {
+				var url = "data.html";
+				$("#data").load(url);
+					
+			}
+			
+			function getData3() {
+				var url = "data.html";
+				fetch(url)
+					.then(response => response.text())
+					.then(result => {
+				
+						if (result > risk_level) {
+							document.getElementById("indicator").classList.add("risky");
+							span_class = "risky";
+						}
+						else {
+							document.getElementById("indicator").classList.remove("risky");
+							span_class = "";
+						}
+						
+						now = new Date();
+						document.getElementById("data").innerHTML =
+							"<span class=" + span_class + ">" + now + " " + result + "</span><br />" + 
+							document.getElementById("data").innerHTML;
+					});
+				
+			}
+		
+			async function getData2() {
+				var url = "data.html";
+				var response = await fetch(url);
+				var result = await response.text();
+		
+				if (result > risk_level) {
+					document.getElementById("indicator").classList.add("risky");
+					span_class = "risky";
+				}
+				else {
+					document.getElementById("indicator").classList.remove("risky");
+					span_class = "";
+				}
+				
+				now = new Date();
+				document.getElementById("data").innerHTML =
+					"<span class=" + span_class + ">" + now + " " + result + "</span><br />" + 
+					document.getElementById("data").innerHTML;
+				
+			}
+			
+			function getData1() {
+				url = "data.html";
+				var xhr = new XMLHttpRequest();
+				xhr.open("GET",url);
+				xhr.onload = function() {
+					result = xhr.responseText;
+					if (result > risk_level) {
+						document.getElementById("indicator").classList.add("risky");
+						span_class = "risky";
+					}
+					else {
+						document.getElementById("indicator").classList.remove("risky");
+						span_class = "";
+					}
+					now = new Date();
+					document.getElementById("data").innerHTML =
+						"<span class=" + span_class + ">" + now + " " + result + "</span><br />" + 
+						document.getElementById("data").innerHTML;
+				}
+				xhr.send();
+			}
+			
+		</script>
+	</head>
+	<body>
+		<h1>UI for microservices</h1>
+		<!--<button onclick="getData();">Test</button>-->
+		<div id="indicator"></div>
+		<div id="data">
+		</div>
+		<script>
+			window.setInterval(getData, 3000);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <style>
+            div.thumbs{
+                float:left;
+            }
+
+            div.thumbs .photo{
+                display: block;
+            }
+
+            #main{
+                height: 300px;
+            }
+
+            .photo {
+                 width: 200px;
+                 height: 200px;
+                 margin: 18px;
+				 margin-color: black;
+                 overflow: hidden;
+                 border-radius: 50%;
+                 cursor: pointer;
+            }
+
+            .personPhoto {
+                width: 100%;
+                height: 100%;
+                margin: 0 auto;
+            }
+
+            #main {
+                margin-left:400px;
+				margin-top: 200px;
+				border-radius: 45%;
+				border-color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>AB's Corn Album</h1>
+
+        <div class="thumbs">
+                <div class="photo">
+                  <img class="personPhoto" alt="" src="images/AB01_thumb.jpg">
+                </div>
+
+                <div class="photo">
+                  <img class="personPhoto" alt="" src="images/AB02_thumb.jpg">
+                </div>
+
+                <div class="photo">
+                  <img class="personPhoto" alt="" src="images/AB03_thumb.jpg">
+                </div>
+
+                <div class="photo">
+                  <img class="personPhoto" alt="" src="images/AB04_thumb.jpg">
+                </div>    
+        </div>
+        <img src="images/AB02.jpg" id="main"/>
+    </body>
+</html> 
