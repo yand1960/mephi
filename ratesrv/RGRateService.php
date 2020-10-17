@@ -11,7 +11,7 @@ function get_currencies() {
 // Получаем курс
 $dollar = get_currencies();
 $rate = $dollar['USD'];
-//echo $dollar['USD'];  
+//echo $dollar['USD']; 123 
 $now = date("H:i:s");
 header('Content-Type: application/json');
 
