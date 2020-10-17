@@ -7,7 +7,7 @@ function getDollarRate() {
 }
 
 $dollar_rate = getDollarRate();
-$date = date("j.n.Y");
+$date = date("d.m.Y H: i s");
 
 //echo "Обменный курс USD по ЦБ РФ на сегодня ({$date}): {$dollar_rate} RUB\n";
-echo $dollar_rate;
+echo $dollar_rate." ".$date;
