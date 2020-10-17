@@ -5,14 +5,12 @@
         $convertRate = $jsonRates->Valute->$ticker->Value;
         return $convertRate;
     }
-    $ticker = USD;
+    $ticker = "USD";
     $dollar_rate = getRates($ticker);
-    // $now = date("H:i:s");
-    date_default_timezone_set("UTC"); // Устанавливаем часовой пояс по Гринвичу
-    $time = time(); // Вот это значение отправляем в базу
-    $offset = 3; // Допустим, у пользователя смещение относительно Гринвича составляет +3 часа
-    $time += 3 * 3600; // Добавляем 3 часа к времени по Гринвичу
-    // date("Y-m-d H:i:s", $time);
+    date_default_timezone_set("UTC");
+    $time = time();
+    $offset = 3;
+    $time += 3 * 3600;
     $js_data = array('time' => date("Y-m-d H:i:s", $time). " UTC+3" , 'rate' => $dollar_rate);
     header('Content-Type: application/json');
     echo json_encode($js_data);
