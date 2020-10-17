@@ -10,6 +10,11 @@ function get_currencies() {
 
 // Получаем курс
 $dollar = get_currencies();
-echo $dollar['USD'];  
+$rate = $dollar['USD'];
+//echo $dollar['USD'];  
+$now = date("H:i:s");
+header('Content-Type: application/json');
+
+echo "{\"time\": \"$now\" , \"rate\": \"$rate\"}";
 
 				
