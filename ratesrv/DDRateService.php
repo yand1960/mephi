@@ -2,7 +2,7 @@
 <?php
 
 
-$ch = curl_init("https://www.cbr-xml-daily.ru/daily_json.js");
+$ch = curl_init("http://www.cbr-xml-daily.ru/daily_json.js");
 
 curl_setopt($ch, CURLOPT_URL, "https://www.cbr-xml-daily.ru/daily_json.js");
 curl_setopt($ch, CURLOPT_HEADER, 0);
