@@ -9,7 +9,7 @@
 
 	$result = json_decode($json, true);
 	$return_value = array();
-	$return_value["time"] = date('Y-m-d H:i:s');
-	$return_value["rate"] = $result["Valute"]["USD"]["Value"];
+	$return_value['time'] = date('Y-m-d H:i:s');
+	$return_value['rate'] = $result['Valute']['USD']['Value'];
 	header('Content-Type: application/json');
 	echo json_encode($return_value);
