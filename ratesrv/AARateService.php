@@ -1,15 +1,15 @@
 <?php
+	$ch = curl_init();
 
-    $xml = simplexml_load_file('http://www.cbr-xml-daily.ru/daily.xml');
-    $dollar_rate = array();
-    foreach ($xml->xpath('//Valute') as $valute) {
-        $dollar_rate[(string)$valute->CharCode] = (float)str_replace(',', '.', $valute->Value);  
-    }
+	curl_setopt($ch, CURLOPT_URL, 'http://www.cbr-xml-daily.ru/daily_json.js');
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-	$rate = $dollar_rate['USD'];
+	$json = curl_exec($ch);
+	curl_close($ch);
 
+	$result = json_decode($json, true);
 	$return_value = array();
 	$return_value["time"] = date('Y-m-d H:i:s');
-	$return_value["rate"] = $rate;
+	$return_value["rate"] = $result["Valute"]["USD"]["Value"];
 	header('Content-Type: application/json');
 	echo json_encode($return_value);
