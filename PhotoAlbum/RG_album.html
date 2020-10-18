@@ -20,8 +20,18 @@
                  overflow: hidden;
                  border-radius: 50%;
                  cursor: pointer;
+                 border:3px  rgba(0, 50, 50, 0) solid ;
+            }
+            .photo:hover {
+                border:3px rgba(38, 8, 110, 0.993) solid ;
             }
 
+            .active:hover {
+                border:3px rgba(243, 22, 41, 0.74) solid ;
+            }
+            .active {
+                border:3px rgba(243, 22, 41, 0.74) solid ;
+            }
             .personPhoto {
                 width: 100%;
                 height: 100%;
@@ -32,25 +42,48 @@
                 margin-left:10px;
             }
         </style>
+        <script>
+            // var selected_thumbs = null;
+
+            function show(thumb) {
+                // document.getElementByClass("photo").classList.remove("active");
+                // if(selected_thumbs != null){
+                //     selected_thumbs.parentElement.classList.remove("active");
+                // }
+                // selected_thumbs = thumb;
+                
+                var list= document.getElementsByClassName("photo");
+                for (var i = 0; i < list.length; i++) {
+                    list[i].classList.remove("active");
+                }
+
+                console.log(thumb.src);
+                var img_url = thumb.src.replace("_thumb","");
+                console.log(img_url);
+                document.getElementById("main").src = img_url;
+                thumb.parentElement.classList.add("active");
+            }
+        </script>
     </head>
     <body>
         <h1>RG Album</h1>
         
         <div class="thumbs">
+          
                 <div class="photo">
-                  <img class="personPhoto" alt="" src="images/RG01_thumb.jpg">
+                  <img class="personPhoto" alt="" onclick="show(this)" src="images/RG01_thumb.jpg">
                 </div>
              
                 <div class="photo">
-                  <img class="personPhoto" alt="" src="images/RG02_thumb.jpg">
+                  <img class="personPhoto" alt="" onclick="show(this)" src="images/RG02_thumb.jpg">
                 </div>
                    
                 <div class="photo">
-                  <img class="personPhoto" alt="" src="images/RG03_thumb.jpg">
+                  <img class="personPhoto" alt="" onclick="show(this)" src="images/RG03_thumb.jpg">
                 </div>
               
                 <div class="photo">
-                  <img class="personPhoto" alt="" src="images/RG04_thumb.jpg">
+                  <img class="personPhoto" alt="" onclick="show(this)" src="images/RG04_thumb.jpg">
                 </div>    
         </div>
         <img src="images/RG01.jpg" id="main"/>
