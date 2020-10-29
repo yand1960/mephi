@@ -8,13 +8,14 @@ function get_currencies() {
     return $currencies;
 }
 
-// Курс доллара
-$dollar = get_currencies();
-$course = $dollar['USD'];
+// Курс валют
+$course = get_currencies();
+$rateD = $course['USD'];
+$rateE = $course['EUR'];
 
-//Время и Курс в формате JSON 
-$date = date("H:i:s");
+//Время и Курс валют в формате JSON 
+$time = date("H:i:s");
 header('Content-Type: application/json');
 
-echo "{\"Время\": \"$date\" 
- \"Курс $\": \"$course\"}";
+echo "{\"Время\": \"$time\" 
+ \"Курс USD\": \"$rateD\" , \"Курс EUR\": \"$rateE\"}";
