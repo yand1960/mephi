@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Script</title>
+</head>
+<script>
+    // В js функция это так же объект,
+    // поэтому с ней можно обращаться как
+    // с объектом, а не только как с функцией,
+    // что я и делаю дальше:
+
+    // Объявляю функцию
+    function func1() {
+        return 'Hello world!';
+    }
+
+    // Добавляю метод объекта
+    func1.bubu = function () {
+        console.log('Good bye, world!');
+    }
+    
+    console.log(func1())
+    func1.bubu()
+
+    // Причем свойства функции как объекта
+    // не влияют на само выполнение функции
+</script>
+<body>
+
+</body>
+</html>
