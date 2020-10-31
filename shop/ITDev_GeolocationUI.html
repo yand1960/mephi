@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <script>
+            function getCurrentCordinates() {
+                navigator.geolocation.getCurrentPosition(async result => {
+                    console.log(result);
+                    document.getElementById("display").innerHTML =
+                        "Latitude:" + result.coords.latitude + "<br />" +
+                        "Longitude:" + result.coords.longitude + "<br />";
+                   
+                        let address = await GetAddress();
+                       
+
+                        let jsaddress = JSON.parse(address);
+
+                        let smallnum
+                        let shopid 
+
+
+                        jsaddress.map( (position, index) => {
+                    
+                            let minus = (position.latitude - result.coords.latitude);
+                            let square = Math.pow (minus, 2);
+
+                            let minus1 = (position.longitude - result.coords.longitude);
+                            let square1 = Math.pow (minus1, 2);
+
+                            let plus = (square + square1);
+                            let range = Math.sqrt(plus);
+
+                            if (range <= smallnum || smallnum == undefined) {
+                                smallnum = range;
+                                shopid = index;
+
+                            }
+
+                        });
+
+                        let finaladdress = jsaddress [shopid].address;
+                        document.querySelector("#address").innerHTML = finaladdress
+
+
+                        
+
+
+                        //написать код который запросит наш сервис nearestShopService.php 
+                        //на предмет нашего ближайшего магазина и выведет его адрес на страницу.
+                });
+            }
+
+            async function GetAddress (x) {
+                var promise = new Promise( (resolve, reject) => {
+
+                var url = "NearestShopServise.php";
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET",url);
+                xhr.onload = () => {
+                    let result = xhr.responseText;
+                    
+                    resolve(result);
+
+                };
+                xhr.send();
+            });
+            return promise;
+        }    
+
+
+        </script>
+    </head>
+    <body>
+        <h1>Geo location demo</h1>
+        <button onclick="getCurrentCordinates();">Show coordinates</button>
+        <div id="display"></div>
+        <div id="address"></div>
+        <textarea></textarea>
+    </body>
+</html>
