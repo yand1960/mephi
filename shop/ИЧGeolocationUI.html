@@ -8,7 +8,7 @@
                         "Latitude:" + result.coords.latitude + "<br />" +
                         "Longitude:" + result.coords.longitude + "<br />";
 
-                    var url = new URL('NearestShopService.php');
+                    var url = new URL('ИЧNearestShopService.php', window.location);
                     var params = {
                           latitude: result.coords.latitude,
                           longitude: result.coords.longitude

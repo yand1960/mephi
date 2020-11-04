@@ -5,8 +5,8 @@ $shops = [
     ["address" => "Oceania", "latitude" => 37, "longitude" => 55]
 ];
 
-$latitude = int($_GET['latitude']);
-$longitude = int($_GET['longitude']);
+$latitude = floatval($_GET['latitude']);
+$longitude = floatval($_GET['longitude']);
 
 $res = null;
 $min = 10;
