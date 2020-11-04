@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<script>
+			function getCurrentCoordinates() {
+				navigator.geolocation.getCurrentPosition( result => {
+					console.log(result);
+					document.getElementById("display").innerHTML = 
+						 "Широта:" +  result.coords.latitude + "<br />" +
+						 "Долгота:" +  result.coords.longitude + "<br /><br /> Адрес ближайшего магазина:<br />";
+
+						var link = "DDnearestShopsService.php?latitude=" + result.coords.latitude + "&longitude=" + result.coords.longitude;
+						var request = new XMLHttpRequest();
+						request.open("GET",link);
+						request.onload = () => {
+						document.getElementById("display").innerText += request.responseText;
+						};
+						request.send();
+				});
+			}
+
+			
+		</script>
+		
+	</head>
+	<body>
+		<h1>Ближайший магазин</h1>
+		<button onclick="getCurrentCoordinates();">Показать Координаты</button>
+		<div id="display"></div>
+	</body>
+</html>
