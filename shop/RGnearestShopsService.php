@@ -13,16 +13,16 @@ $longitude = $_REQUEST["longitude"];
 $adress = null;
 $flag = true;
 $min_dist = 0.0;
-foreach ($shops as $key => $value) {
-	$cur_dist = pow( ($latitude - $value['latitude']),2) + pow( ($longitude - $value['longitude']),2);
+foreach ($shops as $shop) {
+	$cur_dist = pow( ($latitude - $shop['latitude']),2) + pow( ($longitude - $shop['longitude']),2);
 	if ($flag){
-		$adress = $value['address'];
+		$adress = $shop['address'];
 		$min_dist = $cur_dist;
 		$flag = false;
 	}	
   
 	if($cur_dist < $min_dist) {
-	  $adress = $value['address'];
+	  $adress = $shop['address'];
 	  $min_dist = $cur_dist;
 	}
   }
