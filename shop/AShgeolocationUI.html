@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoTitle</title>
+    <script>
+        function getCurrentcoordinates() {
+            navigator.geolocation.getCurrentPosition( result => {
+                console.log(result);
+                document.getElementById("display").innerHTML = "Ваши координаты" + "<br />" + "Latitude:" +
+                result.coords.latitude + "<br />" + "Longitude:" +
+                result.coords.longitude;
+
+                var url = 'AShShopService.php?latitude=' + result.coords.latitude + '&longitude=' + result.coords.longitude;
+
+                fetch(url)
+                    .then(res => res.json())
+                    .then(res => {
+                        document.getElementById("display").innerHTML +=
+                            "<br />Ближайший к вам магазин: " + res.name + "<br />" +
+                            "Магазин расположен по адресу: " + res.address + "<br />";
+                    });
+            });
+        }
+    </script>
+</head>
+<body>
+    <button onclick="getCurrentcoordinates();">Найти ближайший магазин</button>
+    <div id="display"></div>
+</body>
+</html>
