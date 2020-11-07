@@ -26,12 +26,12 @@ function get_distances($x1, $y1){
 	return $distances;
 }
 
-$latitude = $_GET["latitude"];
-$longitude = $_GET["longitude"];
 
 if ($_GET["d"] == 1){
-	echo get_distances($latitude,$longitude);
+	$latitude = $_GET["latitude"];
+    $longitude = $_GET["longitude"];
+	echo json_encode (get_distances($latitude,$longitude));
 }
 else {
-	echo get_coordinates();
+	echo json_encode (get_coordinates());
 }
