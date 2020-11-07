@@ -3,7 +3,7 @@
 async function get_points (x) {
 			   var promise = new Promise( async (resolve, reject) => {
 
-			   var url = "RGnearestShopsService.php";
+			   var url = "RG_serv.php";
 			   var xhr = new XMLHttpRequest();
 			   xhr.open("GET",url);
 			   xhr.onload = () => {
