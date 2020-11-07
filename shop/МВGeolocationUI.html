@@ -1,0 +1,30 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<html>
+    <head>
+        <script>
+            function getNearestShop() {
+                navigator.geolocation.getCurrentPosition(result => {
+                    console.log(result);
+                    document.getElementById("display").innerHTML =
+                        "Latitude:" + result.coords.latitude + "<br />" +
+                        "Longitude:" + result.coords.longitude + "<br />";
+
+                    var url = "МВNearestShopServise.php?latitude=" + result.coords.latitude + "&longitude=" + result.coords.longitude;
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET",url);
+                    xhr.onload = () => {
+                        document.getElementById("display").innerText += xhr.responseText;
+                    };
+                    xhr.send();
+                });
+
+            }
+
+        </script>
+    </head>
+    <body>
+        <h1>Geo location demo</h1>
+        <button onclick="getNearestShop();">Nearest shop</button>
+        <div id="display"></div>
+    </body>
+</html>
