@@ -21,9 +21,9 @@ $min_dist = -1;
 foreach ($shops as $shop) {
 	// $curr_dist = sqrt(pow(($shop['latitude'] - $latitude), 2) + cos($latitude)*pow(($shop['longitude'] - $longitude), 2));
   $dlat2 = pow(($shop['latitude'] - $latitude), 2);
-  $dlon2 = pow(($shop['longitude'] - $longitude), 2;
+  $dlon2 = pow(($shop['longitude'] - $longitude), 2);
   $mult = pow((cos(3.14*$shop['longitude']/180)),2);
-  $curr_dist = 111.2*sqrt(dlon2 + dlat2*mult)
+  $curr_dist = 111.2*sqrt(dlon2 + dlat2*mult);
 
 	if ($min_dist == -1) {
 		$nearest_shop = $shop['address'];
