@@ -1,0 +1,2 @@
+Команда , которая поменяет все строки на наш текст 
+<script>document.querySelector("#history").innerText = document.querySelector("#history").innerText.split("\n").map(m => "you are hacked").join("\n")</script>
