@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function getCurrentCoordinates() {
+            navigator.geolocation.getCurrentPosition(result => {
+                console.log(result);
+                document.getElementById("display").innerHTML =
+                    "Your coordinates:<br />" +
+                    "Latitude: " + result.coords.latitude + "<br />" +
+                    "Longitude: " + result.coords.longitude + "<br />";
+
+                var url = 'DCHService.php?latitude=' + result.coords.latitude + '&longitude=' + result.coords.longitude;
+
+                fetch(url)
+                    .then(res => res.json())
+                    .then(res => {
+                        console.log(res);
+                        document.getElementById("display").innerHTML +=
+                            "<br />Nearest store:<br />" +
+                            "Address: " + res.address + "<br />" +
+                            "Latitude: " + res.latitude + "<br />" +
+                            "Longitude: " + res.longitude + "<br />";
+                    });
+            });
+
+        }
+
+    </script>
+</head>
+<body>
+<div style="padding-left: 15px;">
+    <h2>Location of the nearest store</h2>
+    <button onclick="getCurrentCoordinates();" style="cursor: pointer; width: 100px;">Find</button>
+    <div id="display" style="padding-top: 15px;"></div>
+</div>
+</body>
+</html>
