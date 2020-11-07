@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script src="ДДgeo.js"></script>
+        <script>
+            function getList() {
+              geo.distance2points(res => {
+                console.log(res);
+                document.getElementById('display').innerHTML = res.map(p => 'Address: ' + p.address + '; Distance: ' + p.distance).join('<br />')
+              })
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Geo location demo</h1>
+        <button onclick="getList();">Show coordinates</button>
+        <div id="display"></div>
+        <textarea></textarea>
+    </body>
+</html>
