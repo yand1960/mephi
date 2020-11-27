@@ -1,0 +1,35 @@
+<html>
+
+    <head>
+        <script>
+            function getCurrentCoordinates(){
+                navigator.geolocation.getCurrentPosition(result => {
+                    // console.log(result);
+                    document.getElementById("display").innerHTML = 
+                    "Current coordinates" + "<br />" +
+                    "latitude:" + result.coords.latitude + "<br />" +
+                    "longitude:" + result.coords.longitude + "<br />";
+
+                    var url = "AXnearestShopsService.php?latitude=" + result.coords.latitude + "&longitude=" + result.coords.longitude;
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET",url);
+                    xhr.onload = function() {
+                        res = xhr.responseText;
+                        // console.log(res);
+                        document.getElementById("display").innerText +=
+                        "Nearest shop: " + res;
+                    };
+                    xhr.send();
+                });
+            }
+            
+        </script>
+    </head>
+
+    <body>
+        <h1>Geo location</h1>
+        <button onclick="getCurrentCoordinates();">Show coordinates</button>
+        <div id="display"></div>
+    </body>
+
+</html>
