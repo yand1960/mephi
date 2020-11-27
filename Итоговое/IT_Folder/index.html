@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>AB02 </title>
+
+        <script src="IT_Dev_Qest.js"></script>
+		
+        
+        <style>
+           
+        </style>
+		
+	</head>
+	<body>
+        <form action="" method="get" id="form">
+            <div>
+                <label for="url">Введите URL: </label>
+                <input value="http://yand.dyndns.org/mephi2020_03/course.html" type="text" id="url" >
+            </div>
+            <div>                        
+                <label for="text">Введите искомое значение: </label>
+                <input value="веб" type="text" id="text" >
+            </div>
+            <div class=""> <input type="submit" value="Поиск"></div>
+        </form>
+   
+        <div id="result"></div>
+       
+        </div>
+        <script>
+            document.getElementById("form").addEventListener("submit",async function(e){
+                e.preventDefault()
+                await Reqest_find()
+               
+
+            });
+            
+        </script>
+    </body> 
+</html>
